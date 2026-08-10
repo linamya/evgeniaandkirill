@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // --- 2. ПОЛЕ "ВОЗРАСТ РЕБЕНКА" ---
     const withKidsRadio = document.getElementById("with-kids");
-    const noKidsRadio = document.getElementById("no-kids");
     const childrenAgeInput = document.getElementById("children-age");
 
     document.querySelectorAll('input[name="children"]').forEach(radio => {
@@ -71,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const timerInterval = setInterval(updateTimer, 1000);
     })();
 
-    // --- 4. ОБРАБОТКА ФОРМЫ (ОТПРАВКА В VK ЧЕРЕЗ CLOUDFLARE) ---
+    // --- 4. ОБРАБОТКА ФОРМЫ (ОТПРАВКА В VK ЧЕРЕЗ CLOUDFLARE WORKER) ---
     const form = document.getElementById("wedding-form");
 
     if (form) {
@@ -80,7 +79,8 @@ document.addEventListener("DOMContentLoaded", function () {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            const WORKER_URL = "https://wedding-form-backend.pages.dev/send";
+            // Новый URL Cloudflare Worker
+            const WORKER_URL = "https://evgenia.awsjfe.workers.dev/";
 
             // Сбор данных формы
             const formData = new FormData(form);
@@ -109,17 +109,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     body: JSON.stringify(data)
                 });
 
-                if (response.ok) {
+                const result = await response.json();
+
+                if (response.ok && result.success) {
                     alert("Спасибо за ваш ответ! Анкета успешно отправлена.");
                     form.reset();
-                    if (childrenAgeInput) childrenAgeInput.classList.add("hidden");
+                    if (childrenAgeInput) {
+                        childrenAgeInput.classList.add("hidden");
+                        childrenAgeInput.value = "";
+                    }
                 } else {
                     alert("Произошла ошибка при отправке. Попробуйте еще раз.");
                 }
             } catch (error) {
-                console.error("Ошибка:", error);
+                console.error("Ошибка сети или сервера:", error);
                 alert("Ошибка сети. Проверьте подключение.");
-                console.log(error);
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
@@ -129,4 +133,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-}); // <-- ВОТ ЗДЕСЬ НЕ ХВАТАЛО ЗАКРЫВАЮЩЕЙ СКОБКИ И ТОЧКИ С ЗАПЯТОЙ
+});
