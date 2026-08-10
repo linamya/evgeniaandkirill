@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на свадьбу</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1 БЛОК: Прелоадер / Флеш-экран с фото fon.png -->
+    <div id="intro-overlay" class="intro-overlay">
+        <img src="fon.png" alt="Обложка сайта" class="responsive-img">
+    </div>
+
+    <!-- Основной контент сайта (скрыт до клика) -->
+    <main id="main-content" class="main-content hidden">
+
+        <!-- 2 БЛОК -->
+        <section class="page-block">
+            <img src="d1.png" alt="Блок 1" class="responsive-img">
+        </section>
+
+        <!-- 3 БЛОК -->
+        <section class="page-block">
+            <img src="d2.png" alt="Блок 2" class="responsive-img">
+        </section>
+
+        <!-- 4 БЛОК (со ссылкой) -->
+        <section class="page-block">
+            <a href="https://yandex.com/maps/org/dvorets_brakosochetaniya_yekaterininskiy_zal/128066017990/?ll=38.987485%2C45.060001&z=16" target="_blank" rel="noopener noreferrer">
+                <img src="d3.png" alt="Блок 3" class="responsive-img">
+            </a>
+        </section>
+
+        <!-- 5 БЛОК (со ссылкой) -->
+        <section class="page-block">
+            <a href="https://yandex.com/maps/org/angelochek/115378244526/?ll=39.031844%2C45.136267&z=16" target="_blank" rel="noopener noreferrer">
+                <img src="d4.png" alt="Блок 4" class="responsive-img">
+            </a>
+        </section>
+
+        <!-- 6 БЛОК -->
+        <section class="page-block">
+            <img src="d5.png" alt="Блок 5" class="responsive-img">
+        </section>
+
+        <!-- 7 БЛОК -->
+        <section class="page-block">
+            <img src="d6.png" alt="Блок 6" class="responsive-img">
+        </section>
+
+        <!-- 8 БЛОК: Таймер обратного отсчета -->
+        <section class="page-block timer-section">
+            <div class="timer-container">
+                <div class="timer-title">До свадьбы осталось:</div>
+                <div class="timer-display">
+                    <div class="timer-block">
+                        <span class="timer-number" id="days">00</span>
+                        <span class="timer-label">ДНЕЙ</span>
+                    </div>
+                    <div class="timer-block">
+                        <span class="timer-number" id="hours">00</span>
+                        <span class="timer-label">часов</span>
+                    </div>
+                    <div class="timer-block">
+                        <span class="timer-number" id="minutes">00</span>
+                        <span class="timer-label">минут</span>
+                    </div>
+                    <div class="timer-block">
+                        <span class="timer-number" id="seconds">00</span>
+                        <span class="timer-label">секунд</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9 БЛОК -->
+        <section class="page-block">
+            <img src="d7.png" alt="Блок 7" class="responsive-img">
+        </section>
+
+        <!-- 10 БЛОК: Форма анкеты -->
+        <section class="page-block form-section">
+            <form id="wedding-form" class="wedding-form">
+
+                <!-- 1. Имя и Фамилия -->
+                <div class="form-group">
+                    <label for="name" class="form-label">Ваше Имя и Фамилия</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+
+                <!-- 2. Присутствие -->
+                <div class="form-group">
+                    <label class="form-label">Сможете ли вы присутствовать на нашей свадьбе 1 октября?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Да, приеду и в ЗАГС, и на банкет" required>
+                        <span>Да, приеду и в ЗАГС, и на банкет</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Приеду сразу на банкет к 15:30">
+                        <span>Приеду сразу на банкет к 15:30</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="Смогу приехать только в ЗАГС к 10:00">
+                        <span>Смогу приехать только в ЗАГС к 10:00</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="attendance" value="К сожалению, не смогу прийти">
+                        <span>К сожалению, не смогу прийти</span>
+                    </label>
+                </div>
+
+                <!-- 3. Сопровождение -->
+                <div class="form-group">
+                    <label class="form-label">Придете один/одна или со спутником?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="companion" value="Один" required>
+                        <span>Один / Одна</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="companion" value="Со спутником">
+                        <span>Со спутником</span>
+                    </label>
+                </div>
+
+                <!-- 4. Дети -->
+                <div class="form-group">
+                    <label class="form-label">Планируете ли вы быть с детьми?</label>
+                    <label class="radio-label">
+                        <input type="radio" name="children" value="Приду без детей" required id="no-kids">
+                        <span>Приду без детей</span>
+                    </label>
+                    <label class="radio-label">
+                        <input type="radio" name="children" value="С ребенком" id="with-kids">
+                        <span>Да, со мной будет ребенок</span>
+                    </label>
+                    <input type="text" id="children-age" name="children_age" placeholder="Укажите возраст ребенка" class="form-input sub-input hidden">
+                </div>
+
+                <!-- 5. Еда и напитки -->
+<div class="form-group">
+    <label for="preferences" class="form-label">Ваши предпочтения по еде и напиткам:</label>
+    <p class="form-subtext">Пожалуйста, напишите, что вы предпочитаете из алкоголя (например: водка, коньяк, полусладкое красное вино, брют) и есть ли у вас сильная аллергия на какие-то продукты</p>
+    <input type="text" id="preferences" name="preferences" class="form-input">
+</div>
+                <!-- 6. Музыка -->
+                <div class="form-group">
+                    <label for="music" class="form-label">Какая песня точно заставит тебя выйти на танцпол?</label>
+                    <input type="text" id="music" name="music" class="form-input">
+                </div>
+
+                <button type="submit" class="submit-btn">Отправить</button>
+            </form>
+        </section>
+
+        <!-- 11 БЛОК -->
+        <section class="page-block">
+            <img src="d8.png" alt="Блок 8" class="responsive-img">
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
