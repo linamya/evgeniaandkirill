@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } catch (error) {
                 console.error("Ошибка:", error);
                 alert("Ошибка сети. Проверьте подключение.");
+                console.log(error);
             } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
