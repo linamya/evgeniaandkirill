@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            const WORKER_URL = "https://bold-truth-70e7.awsjfe.workers.dev/";
+            const WORKER_URL = "https://wedding-form-czb.pages.dev/send";
 
             // Сбор данных формы
             const formData = new FormData(form);
